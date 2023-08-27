@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.App {
+  font-family: sans-serif;
+  padding: 10px 30px;
+}
+
+.allVideos {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.container {
+  background-color: lightgray;
+  border-radius: 15px;
+  padding: 8px;
+  margin: 20px;
+}
+
+.image {
+  border-radius: 8px;
+}
+
+.misc,
+.cname,
+.tname {
+  margin: 5px 0px;
+}
+
+.cname,
+.misc {
+  color: rgb(108, 108, 108);
+}
+.addBtn {
+  margin-left: 20px;
+  padding: 4px;
+  font-size: small;
+  background-color: light-gray;
+  border-radius: 15px;
+  color: rgb(110, 110, 110);
+}
+.addBtn:hover {
+  background-color: rgb(46, 46, 46);
+  color: whitesmoke;
+}
+
+.btn {
+  margin: 4px;
+  padding: 5px;
+  border-radius: 8px;
+  background-color: white;
+  color: rgb(139, 139, 139);
+  border: none;
+}
+.btn:hover {
+  background-color: rgb(148, 148, 148);
+  color: white;
+}
