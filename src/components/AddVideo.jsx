@@ -6,7 +6,7 @@ function AddVideo({ addNew }) {
     channel: "Code Hub",
     verified: true,
     title: "",
-    views: ""
+    views: "",
   };
   const [videos, setVideos] = useState(initialValue);
   const [stat, setStat] = useState(false);
@@ -14,7 +14,7 @@ function AddVideo({ addNew }) {
   function handleChange(e) {
     setVideos({
       ...videos,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
     e.target.value === "" ? setStat(false) : setStat(true);
   }
@@ -32,7 +32,6 @@ function AddVideo({ addNew }) {
           onChange={handleChange}
           placeholder="Enter Video title"
           value={videos.title}
-          // value --> to convert from uncontrolled to controlled
         />
         <input
           type="text"
