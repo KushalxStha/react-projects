@@ -5,11 +5,15 @@ function Video({
   verified,
   views = 0,
   time = "today",
-  children
+  children,
+  deleteVideo,
 }) {
   return (
     <>
       <div className="container">
+        <button className="delete" onClick={() => deleteVideo(imageId)}>
+          X
+        </button>
         <img
           className="image"
           src={`https://source.unsplash.com/random/250x180?sig=${imageId}`}

@@ -1,9 +1,10 @@
 import Video from "./Video";
 import Play from "./Play";
 
-function Vlist({vdo}){
-    return(
-        <><div className="allVideos">
+function Vlist({ vdo, deleteVideo }) {
+  return (
+    <>
+      <div className="allVideos">
         {vdo.map((element) => (
           <Video
             key={element.id}
@@ -12,16 +13,20 @@ function Vlist({vdo}){
             channel={element.channel}
             verified={element.verified}
             views={element.views}
-            time={element.time}>
+            time={element.time}
+            deleteVideo={deleteVideo}
+          >
             <Play
               onPlay={() => console.log("Playing...", element.title)}
-              onPause={() => console.log("Paused...", element.title)}>
+              onPause={() => console.log("Paused...", element.title)}
+            >
               {element.title}
             </Play>
           </Video>
         ))}
-      </div></>
-    )
+      </div>
+    </>
+  );
 }
 
 export default Vlist;

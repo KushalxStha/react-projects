@@ -10,12 +10,15 @@ export default function App() {
   function addNew(videos) {
     setVdo([...vdo, { ...videos, id: vdo.length + 1 }]);
   }
+  function deleteVideo(id) {
+    setVdo(vdo.filter((vids) => vids.id !== id));
+  }
 
   return (
     <div className="App">
       <h1>Videos</h1>
       <AddVideo addNew={addNew} old={vdo} />
-      <Vlist vdo={vdo} />
+      <Vlist vdo={vdo} deleteVideo={deleteVideo} />
     </div>
   );
 }
