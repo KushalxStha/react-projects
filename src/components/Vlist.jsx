@@ -1,7 +1,7 @@
 import Video from "./Video";
 import Play from "./Play";
 
-function Vlist({ vdo, deleteVideo }) {
+function Vlist({ vdo, deleteVideo, editVideo }) {
   return (
     <>
       <div className="allVideos">
@@ -15,6 +15,7 @@ function Vlist({ vdo, deleteVideo }) {
             views={element.views}
             time={element.time}
             deleteVideo={deleteVideo}
+            editVideo={editVideo}
           >
             <Play
               onPlay={() => console.log("Playing...", element.title)}

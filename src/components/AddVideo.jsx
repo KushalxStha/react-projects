@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function AddVideo({ addNew }) {
+function AddVideo({ addNew, editableVideo, updateVideos, setEditableVideo }) {
   const initialValue = {
     time: "1 month ago",
     channel: "Code Hub",
@@ -20,9 +20,19 @@ function AddVideo({ addNew }) {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    stat ? addNew(videos) : console.log("no value");
+    editableVideo
+      ? updateVideos(videos)
+      : stat
+      ? addNew(videos)
+      : console.log("no value");
+    setEditableVideo(false);
     setVideos(initialValue);
   }
+  useEffect(() => {
+    if (editableVideo) {
+      setVideos(editableVideo);
+    }
+  }, [editableVideo]);
   return (
     <div className="App">
       <form>
@@ -41,7 +51,7 @@ function AddVideo({ addNew }) {
           value={videos.views}
         />
         <button className="addBtn" type="submit" onClick={handleSubmit}>
-          Submit
+          {editableVideo ? "Edit " : "Add "}Video
         </button>
       </form>
     </div>
