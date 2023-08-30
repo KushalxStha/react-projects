@@ -7,10 +7,14 @@ function Video({
   time = "today",
   children,
   deleteVideo,
+  editVideo,
 }) {
   return (
     <>
       <div className="container">
+        <button className="edit" onClick={() => editVideo(imageId)}>
+          Edit
+        </button>
         <button className="delete" onClick={() => deleteVideo(imageId)}>
           X
         </button>
