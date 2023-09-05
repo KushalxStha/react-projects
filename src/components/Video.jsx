@@ -6,7 +6,7 @@ function Video({
   views = 0,
   time = "today",
   children,
-  deleteVideo,
+  dispatch,
   editVideo,
 }) {
   return (
@@ -15,7 +15,7 @@ function Video({
         <button className="edit" onClick={() => editVideo(imageId)}>
           Edit
         </button>
-        <button className="delete" onClick={() => deleteVideo(imageId)}>
+        <button className="delete" onClick={() => dispatch({type:'DELETE', payload:imageId})}>
           X
         </button>
         <img

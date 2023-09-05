@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function AddVideo({ addNew, editableVideo, updateVideos, setEditableVideo }) {
+function AddVideo({ dispatch, editableVideo }) {
   const initialValue = {
     time: "1 month ago",
     channel: "Code Hub",
@@ -21,11 +21,10 @@ function AddVideo({ addNew, editableVideo, updateVideos, setEditableVideo }) {
   function handleSubmit(e) {
     e.preventDefault();
     editableVideo
-      ? updateVideos(videos)
+      ? dispatch({type:'UPDATE', payload:videos})
       : stat
-      ? addNew(videos)
+      ? dispatch({type:'ADD', payload:videos})
       : console.log("no value");
-    setEditableVideo(false);
     setVideos(initialValue);
   }
   useEffect(() => {

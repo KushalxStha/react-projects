@@ -1,40 +1,40 @@
 import "./styles.css";
 import vidsData from "./data/Data";
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import AddVideo from "./components/AddVideo";
 import Vlist from "./components/Vlist";
 
 export default function App() {
-  const [vdo, setVdo] = useState(vidsData);
-  const [editableVideo, setEditableVideo] = useState(false);
+  const [editableVideo, setEditableVideo] = useState(null);
 
-  function addNew(videos) {
-    setVdo([...vdo, { ...videos, id: vdo.length + 1 }]);
+  function videoReducer(vdo,action){
+    switch(action.type){
+      case 'ADD':
+        return [...vdo, { ...action.payload, id: vdo.length + 1 }];
+      case 'DELETE':
+        return vdo.filter((vids) => vids.id !== action.payload);
+      case 'UPDATE':
+        const index = vdo.find((vids) => vids.id === action.payload.id);
+        const newVdo = [...vdo];
+        newVdo.splice(index, 1, action.payload);
+        setEditableVideo(null);
+        return newVdo;
+      default:
+        return vdo;
+    }
   }
-  function deleteVideo(id) {
-    setVdo(vdo.filter((vids) => vids.id !== id));
-  }
+
+  const [vdo,dispatch]=useReducer(videoReducer,vidsData)
+
   function editVideo(id) {
     setEditableVideo(vdo.find((vids) => vids.id === id));
-  }
-  function updateVideos(videos) {
-    const index = vdo.find((vids) => vids.id === videos.id);
-    const newVdo = [...vdo];
-    newVdo.splice(index, 1, videos);
-    setVdo(newVdo);
   }
 
   return (
     <div className="App">
       <h1>Videos</h1>
-      <AddVideo
-        addNew={addNew}
-        old={vdo}
-        updateVideos={updateVideos}
-        editableVideo={editableVideo}
-        setEditableVideo={setEditableVideo}
-      />
-      <Vlist vdo={vdo} deleteVideo={deleteVideo} editVideo={editVideo} />
+      <AddVideo dispatch={dispatch} editableVideo={editableVideo} />
+      <Vlist vdo={vdo} dispatch={dispatch} editVideo={editVideo} />
     </div>
   );
 }
