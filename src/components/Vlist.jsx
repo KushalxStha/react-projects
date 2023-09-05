@@ -1,7 +1,7 @@
 import Video from "./Video";
 import Play from "./Play";
 
-function Vlist({ vdo, deleteVideo, editVideo }) {
+function Vlist({ vdo, dispatch, editVideo }) {
   return (
     <>
       <div className="allVideos">
@@ -14,7 +14,7 @@ function Vlist({ vdo, deleteVideo, editVideo }) {
             verified={element.verified}
             views={element.views}
             time={element.time}
-            deleteVideo={deleteVideo}
+            dispatch={dispatch}
             editVideo={editVideo}
           >
             <Play
