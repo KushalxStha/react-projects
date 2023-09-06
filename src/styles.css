@@ -32,6 +32,10 @@
   margin: 5px 0px;
 }
 
+.tname {
+  color: black;
+}
+
 .cname,
 .misc {
   color: rgb(108, 108, 108);
