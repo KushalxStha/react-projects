@@ -25,6 +25,9 @@
 .image {
   border-radius: 8px;
 }
+.tname{
+  color:black;
+}
 
 .misc,
 .cname,
@@ -45,7 +48,7 @@
   color: rgb(110, 110, 110);
 }
 .addBtn:hover {
-  background-color: rgb(46, 46, 46);
+  background-color: green;
   color: whitesmoke;
 }
 
@@ -89,4 +92,14 @@
 
 .edit:hover {
   background-color: rgb(79, 79, 255);
+}
+
+.darkMode {
+  background-color: rgb(78, 78, 78);
+  color: goldenrod;
+}
+
+.lightMode {
+  background-color: white;
+  color: black;
 }
