@@ -3,9 +3,11 @@ import vidsData from "./data/Data";
 import { useReducer, useState } from "react";
 import AddVideo from "./components/AddVideo";
 import Vlist from "./components/Vlist";
+import ThemeContext from "./context/ThemeContext";
 
 export default function App() {
   const [editableVideo, setEditableVideo] = useState(null);
+  const [mode, setMode]=useState('darkMode');
 
   function videoReducer(vdo,action){
     switch(action.type){
@@ -31,10 +33,18 @@ export default function App() {
   }
 
   return (
-    <div className="App">
-      <h1>Videos</h1>
-      <AddVideo dispatch={dispatch} editableVideo={editableVideo} />
-      <Vlist vdo={vdo} dispatch={dispatch} editVideo={editVideo} />
-    </div>
+    <ThemeContext.Provider value={mode}>
+      <div className={`App ${mode}`}>
+        <h1>Videos</h1>
+        <button 
+          onClick={()=>
+            setMode(mode=="darkMode"?"lightMode":"darkMode")
+          }>
+          Switch Theme
+        </button>
+        <AddVideo dispatch={dispatch} editableVideo={editableVideo} />
+        <Vlist vdo={vdo} dispatch={dispatch} editVideo={editVideo} />
+      </div>
+    </ThemeContext.Provider>
   );
 }
