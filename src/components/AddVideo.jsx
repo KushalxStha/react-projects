@@ -33,7 +33,7 @@ function AddVideo({ dispatch, editableVideo }) {
     }
   }, [editableVideo]);
   return (
-    <div className="App">
+    <div>
       <form>
         <input
           type="text"
