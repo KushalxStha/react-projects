@@ -4,6 +4,8 @@ import { useReducer, useState } from "react";
 import AddVideo from "./components/AddVideo";
 import Vlist from "./components/Vlist";
 import ThemeContext from "./context/ThemeContext";
+import VideosContext from "./context/VideosContext";
+import VideoDispatchContext from "./context/VideoDispatchContext";
 
 export default function App() {
   const [editableVideo, setEditableVideo] = useState(null);
@@ -34,17 +36,21 @@ export default function App() {
 
   return (
     <ThemeContext.Provider value={mode}>
-      <div className={`App ${mode}`}>
-        <h1>Videos</h1>
-        <button 
-          onClick={()=>
-            setMode(mode=="darkMode"?"lightMode":"darkMode")
-          }>
-          Switch Theme
-        </button>
-        <AddVideo dispatch={dispatch} editableVideo={editableVideo} />
-        <Vlist vdo={vdo} dispatch={dispatch} editVideo={editVideo} />
-      </div>
+      <VideosContext.Provider value={vdo}>
+        <VideoDispatchContext.Provider value={dispatch}>
+          <div className={`App ${mode}`}>
+            <h1>Videos</h1>
+            <button 
+              onClick={()=>
+                setMode(mode=="darkMode"?"lightMode":"darkMode")
+              }>
+              Switch Theme
+            </button>
+            <AddVideo editableVideo={editableVideo} />
+            <Vlist editVideo={editVideo} />
+          </div>
+        </VideoDispatchContext.Provider>
+      </VideosContext.Provider>
     </ThemeContext.Provider>
   );
 }
