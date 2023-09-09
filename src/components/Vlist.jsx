@@ -1,7 +1,10 @@
 import Video from "./Video";
 import Play from "./Play";
+import { useContext } from "react";
+import VideosContext from "../context/VideosContext";
 
-function Vlist({ vdo, dispatch, editVideo }) {
+function Vlist({ editVideo }) {
+  const vdo=useContext(VideosContext);
   return (
     <>
       <div className="allVideos">
@@ -14,7 +17,6 @@ function Vlist({ vdo, dispatch, editVideo }) {
             verified={element.verified}
             views={element.views}
             time={element.time}
-            dispatch={dispatch}
             editVideo={editVideo}
           >
             <Play
