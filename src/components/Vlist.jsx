@@ -1,10 +1,9 @@
 import Video from "./Video";
 import Play from "./Play";
-import { useContext } from "react";
-import VideosContext from "../context/VideosContext";
+import useVideo from "../hooks/UseVideo";
 
 function Vlist({ editVideo }) {
-  const vdo=useContext(VideosContext);
+  const vdo=useVideo();
   return (
     <>
       <div className="allVideos">
