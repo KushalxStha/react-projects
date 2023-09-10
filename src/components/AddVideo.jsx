@@ -1,8 +1,8 @@
-import { useState, useEffect, useContext } from "react";
-import VideoDispatchContext from "../context/VideoDispatchContext";
+import { useState, useEffect } from "react";
+import useVideoDispatch from "../hooks/UseVideoDispatch";
 
 function AddVideo({ editableVideo }) {
-  const dispatch=useContext(VideoDispatchContext);
+  const dispatch=useVideoDispatch();
   const initialValue = {
     time: "1 month ago",
     channel: "Code Hub",
