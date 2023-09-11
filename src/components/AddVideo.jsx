@@ -1,17 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import useVideoDispatch from "../hooks/UseVideoDispatch";
 
-function AddVideo({ editableVideo }) {
-  const dispatch=useVideoDispatch();
-  const initialValue = {
+const initialValue = {
     time: "1 month ago",
     channel: "Code Hub",
     verified: true,
     title: "",
     views: "",
   };
+
+function AddVideo({ editableVideo }) {
+  const dispatch=useVideoDispatch();
   const [videos, setVideos] = useState(initialValue);
   const [stat, setStat] = useState(false);
+  const inputRef=useRef(null);
 
   function handleChange(e) {
     setVideos({
@@ -33,11 +35,13 @@ function AddVideo({ editableVideo }) {
     if (editableVideo) {
       setVideos(editableVideo);
     }
+    inputRef.current.focus();
   }, [editableVideo]);
   return (
     <div>
       <form>
         <input
+          ref={inputRef}
           type="text"
           name="title"
           onChange={handleChange}
